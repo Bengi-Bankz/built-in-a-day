@@ -32,6 +32,9 @@
 	import FreeSpinOutro from './FreeSpinOutro.svelte';
 	import Transition from './Transition.svelte';
 
+	// Import logo for top right
+	const logoUrl = new URL('../assets/logo.png', import.meta.url).href;
+
 
 	const context = getContext();
 
@@ -90,17 +93,7 @@
 				<UiGameName name="ROME IN RICHES" />
 			{/snippet}
 			{#snippet logo()}
-				<Text
-					anchor={{ x: 1, y: 0 }}
-					text="ONLY SPINS STUDIOS"
-					style={{
-						fontFamily: 'proxima-nova',
-						fontSize: REM * 1.5,
-						fontWeight: '600',
-						lineHeight: REM * 2,
-						fill: 0xffffff,
-					}}
-				/>
+				<img src={logoUrl} alt="Logo" style="position: absolute; top: 0; right: 0; width: 120px; height: auto; z-index: 1000;" />
 			{/snippet}
 		</UI>
 		<Win />
