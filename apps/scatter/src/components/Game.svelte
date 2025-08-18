@@ -32,8 +32,17 @@
 	import FreeSpinOutro from './FreeSpinOutro.svelte';
 	import Transition from './Transition.svelte';
 
+
 	// Import logo for top right
 	const logoUrl = new URL('../assets/logo.png', import.meta.url).href;
+
+	// Import paytable image for modal
+	const paytableUrl = new URL('../assets/paytable.png', import.meta.url).href;
+
+	// Function to open paytable modal
+	function openPaytable() {
+		stateModal.modal = { name: 'payTable' };
+	}
 
 
 	const context = getContext();
@@ -92,8 +101,13 @@
 			{#snippet gameName()}
 				<UiGameName name="ROME IN RICHES" />
 			{/snippet}
-			{#snippet logo()}
-				<img src={logoUrl} alt="Logo" style="position: absolute; top: 0; right: 0; width: 120px; height: auto; z-index: 1000;" />
+	       {#snippet logo()}
+		       <div style="position: absolute; top: 0; right: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; z-index: 1000;">
+			       <img src={logoUrl} alt="Logo" style="width: 120px; height: auto;" />
+			       <button on:click={openPaytable} aria-label="Info" style="margin-top: 8px; width: 40px; height: 40px; background: #fff; border: 1px solid #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; color: #222; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.08); transition: background 0.2s;">
+				       i
+			       </button>
+		       </div>
 			{/snippet}
 		</UI>
 		<Win />
