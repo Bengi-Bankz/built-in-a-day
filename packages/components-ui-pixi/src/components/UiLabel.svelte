@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Text } from 'pixi-svelte';
-	import { WHITE } from 'constants-shared/colors';
+	import { WHITE}  from 'constants-shared/colors';
 
 	import UiSprite from './UiSprite.svelte';
 	import { UI_BASE_FONT_SIZE } from '../constants';
@@ -26,7 +26,6 @@
 		fill: WHITE,
 	} as const;
 </script>
-
 {#if props.stacked}
 	{#if props.tiled}
 		<UiSprite

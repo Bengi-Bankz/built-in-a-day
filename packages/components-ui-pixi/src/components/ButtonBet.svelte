@@ -12,6 +12,9 @@
 	const props: Partial<Omit<ButtonProps, 'children'>> = $props();
 	const disabled = $derived(!stateBetDerived.isBetCostAvailable());
 	const sizes = { width: UI_BASE_SIZE, height: UI_BASE_SIZE };
+
+	// Use play.png as the button image
+	const playButtonUrl = new URL('../../../../apps/scatter/static/assets/buttons/play.png', import.meta.url).href;
 </script>
 
 <ButtonBetProvider>
@@ -20,17 +23,18 @@
 		<Button {...props} {sizes} {onpress} {disabled}>
 			{#snippet children({ center, hovered })}
 				<Container {...center}>
-					<UiSprite
-						key="bet"
-						width={sizes.width}
-						height={sizes.height}
-						anchor={0.5}
-						{...disabled || ['spin_disabled', 'stop_disabled'].includes(key)
-							? {
-									backgroundColor: 0xaaaaaa,
-								}
-							: {}}
-					/>
+					   <UiSprite
+						   key="bet"
+						   src={playButtonUrl}
+						   width={sizes.width}
+						   height={sizes.height}
+						   anchor={0.5}
+						   {...disabled || ['spin_disabled', 'stop_disabled'].includes(key)
+							   ? {
+									   backgroundColor: 0xaaaaaa,
+								   }
+							   : {}}
+					   />
 					<Text
 						anchor={0.5}
 						text={['spin_default', 'spin_disabled'].includes(key)
